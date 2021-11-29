@@ -1,5 +1,5 @@
 {
-  "name": "react-webpack",
+  "name": "react-patterns",
   "version": "0.0.1",
   "dependencies": {
     "@reduxjs/toolkit": "^1.6.2",

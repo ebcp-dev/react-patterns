@@ -1,9 +1,11 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 
-import TodoList from '../pages/TodoList/TodoList';
-import Route1 from '../pages/Route1/Route1';
-import SubRoute1 from '../pages/Route1/SubRoute1/SubRoute1';
+import TodoList from '../pages/TodoListRedux/TodoList';
+import TodoListContextAPIWrapper from '../pages/TodoListContext/TodoList';
+import TodoListHOC from '../pages/TodoListHOC/TodoList';
+import TodoListHook from '../pages/TodoListHook/TodoList';
+import TodoListRenderProps from '../pages/TodoListRenderProps/TodoList';
 import NotFound from '../pages/NotFound/NotFound';
 
 import './App.scss';
@@ -13,17 +15,27 @@ const App = () => {
     <BrowserRouter>
       <ul>
         <li>
-          <Link to="/">Todo List Home</Link>
+          <Link to="/">TodoList Redux</Link>
         </li>
         <li>
-          <Link to="/route1">Route1</Link>
+          <Link to="/context">TodoList Context API</Link>
+        </li>
+        <li>
+          <Link to="/hoc">TodoList HOC</Link>
+        </li>
+        <li>
+          <Link to="/hook">TodoList Custom Hook</Link>
+        </li>
+        <li>
+          <Link to="/render-props">TodoList Render Props</Link>
         </li>
       </ul>
       <Routes>
         <Route path="/" element={<TodoList />} />
-        <Route path="route1" element={<Route1 />}>
-          <Route path="subroute1" element={<SubRoute1 />} />
-        </Route>
+        <Route path="/context" element={<TodoListContextAPIWrapper />} />
+        <Route path="/hoc" element={<TodoListHOC />} />
+        <Route path="/hook" element={<TodoListHook />} />
+        <Route path="/render-props" element={<TodoListRenderProps />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>

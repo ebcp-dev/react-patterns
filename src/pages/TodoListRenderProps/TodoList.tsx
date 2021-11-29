@@ -1,24 +1,20 @@
 import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-
-import { RootState } from '../../app/store';
 
 import CustomButton from '../../components/CustomButton/CustomButton';
 import CustomTextInput from '../../components/CustomTextInput/CustomTextInput';
-import Todo from './components/Todo/Todo';
+import TodoListRender from './TodoListRender';
 
 import './TodoList.scss';
-import { addTodo } from './todoListSlice';
 
-const TodoList = () => {
+const TodoListRenderProps = () => {
   const [todoInput, setTodoInput] = useState('');
+  const [todoList, setTodoList] = useState<string[]>([]);
 
-  const dispatch = useDispatch();
   const handleAddTodo = () => {
     if (!todoInput) {
       console.log('Enter a task to add.');
     } else {
-      dispatch(addTodo(todoInput));
+      setTodoList((todoList) => [...todoList, todoInput]);
       setTodoInput('');
     }
   };
@@ -27,16 +23,10 @@ const TodoList = () => {
     setTodoInput(event.currentTarget.value);
   };
 
-  const todoList = useSelector((state: RootState) => state.todoList.value);
-
-  const renderTodoList = todoList.map((item, index) => {
-    return <Todo todoName={item} todoIndex={index} key={index} />;
-  });
-
   return (
     <section className="todoList-section">
       <div className="todoList-container">
-        <h1>Todo List Home</h1>
+        <h1>Todo List Render Props</h1>
         <CustomTextInput
           name="todoInput"
           placeholder="Add a task"
@@ -44,10 +34,10 @@ const TodoList = () => {
           onChange={handleInputChange}
         />
         <CustomButton onClick={handleAddTodo}>Add Todo</CustomButton>
-        {renderTodoList}
+        <TodoListRender renderList={todoList} showDate={true} />
       </div>
     </section>
   );
 };
 
-export default TodoList;
+export default TodoListRenderProps;
