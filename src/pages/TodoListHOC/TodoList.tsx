@@ -31,7 +31,7 @@ const TodoListHOC = () => {
   return (
     <section className="todoList-section">
       <div className="todoList-container">
-        <h1>Todo List HOC</h1>
+        <h1>Todo List HOC (withDate)</h1>
         <CustomTextInput
           name="todoInput"
           placeholder="Add a task"

@@ -1,4 +1,4 @@
-# react-webpack template
+# React Patterns (11_24_HW)
 
 A Webpack 5 template for Typescript, React and Redux Toolkit.
 
